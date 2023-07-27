@@ -19,7 +19,7 @@
 
 .tableCateSubcate{
 	margin-top: 30px;
-	width: 70%;
+	width: 80%;
 	margin-left: 20%;
 }
 
@@ -33,7 +33,7 @@
 }
 
 #categoria {
-	width: 200px;
+	width: 245px;
 }
 
 #codSubcategoria {
@@ -41,5 +41,5 @@
 }
 
 #subcategoria {
-	width: 270px;
+	width: 330px;
 }
