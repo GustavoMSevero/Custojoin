@@ -1,0 +1,17 @@
+<div class="container-fluid">
+	<div class="row logoFluxojojn">
+		<div class="col-md-4">
+			<div class="fluxojoin"><img src="imgs/fluxojoin.png"></div>
+		</div>
+		<div class="col-md-8 sigin">
+			<form name="loginForm" class="form-signin signin-form" ng-controller="LoginCtrl">
+				<label class="usuario">E-mail</label> <input class="form-control user" type="text" name="ema" ng-model="usuario.email">
+				<label class="senha">Senha</label> <input class="form-control pass" type="password" name="pass" ng-model="usuario.senha">
+				<button class="btn btn-success" ng-click="logar(usuario)">Entrar</button>
+				<a class="btn btn-success" href="#/cadempresa">Cadastra-se</a>
+				<div id="escondido"><a href="#loginadmin">Entrada</a></div>
+				<div class="msgErroLogin">{{msgErro}}</div>
+			</form>
+		</div>
+	</div>
+</div>

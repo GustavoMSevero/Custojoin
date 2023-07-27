@@ -1,0 +1,24 @@
+<div class="container-fluid" ng-controller="editarSubcategoriaAdminCJCtrl">
+	<div class="row logoFluxojojn">
+		<div class="col-md-12">
+			<div class="fluxojoin"><img src="imgs/fluxojoin.png"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<a class="btn btn-default botaoVoltarAreaAdmin" href="#/subcategoriaAdmin">Voltar</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 formSubAdmin">
+			<form name="formCate">
+				<select class="form-control formSelect" name="group" ng-model="subcategory.codeCategory" required>
+					<option ng-repeat="cate in categories" value="{{cate.codecategory}}">{{cate.categoryname}}</option>
+				</select>
+				<input class="form-control formInput" type="text" name="codecategory" ng-model="subcategory.codeSubcategory" placeholder="Código">
+				<input class="form-control formInput" type="text" name="categoryname" ng-model="subcategory.subcategory" placeholder="Subcategoria">
+				<a class="btn btn-success botaoSalvarSubcate" ng-disabled="formCate.$invalid" ng-click="updateSubcategory(subcategory)">Atualizar</a>
+			</form>
+		</div>
+	</div>
+</div>

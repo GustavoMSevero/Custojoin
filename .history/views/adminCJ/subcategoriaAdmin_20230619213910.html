@@ -1,0 +1,74 @@
+<style type="text/css">
+.formSubAdmin{
+	text-align: center;
+}
+
+.formSelect{
+	width: 15%;
+	display: inline-block;
+	margin-top: 60px;
+}
+.formInput{
+	width: 30%;
+	display: inline-block;
+	margin-top: 60px;
+}
+
+.botaoSalvarSubcate{
+	margin-top: 60px;
+}
+
+.tableCateSubcate{
+	margin-top: 30px;
+	width: 40%;
+	margin-left: 25%;
+}
+
+.botaoVoltarAreaAdmin{
+	width: 5%;
+	margin-left: 95%;
+}
+
+</style>
+<div class="container-fluid">
+	<div class="row logoFluxojojn">
+		<div class="col-md-12">
+			<div class="fluxojoin"><img src="imgs/fluxojoin.png"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<a class="btn btn-default botaoVoltarAreaAdmin" href="#/areaadmin">Voltar</a>
+		</div>
+	</div>
+	<div class="row" ng-controller="SubcategoriaAdminCtrl">
+		<div class="col-md-12 formSubAdmin">
+			<form name="formSubcate">
+				<select class="form-control formSelect" name="categoria" ng-model="subcategoria.categoria" required>
+					<option value="Recebimento">Recebimentos</option>
+					<option value="Pagamento">Pagamentos</option>
+				</select>
+				<input class="form-control formInput" type="text" name="subcategoria" ng-model="subcategoria.subcategoria" placeholder="Subcategoria">
+				<a class="btn btn-success botaoSalvarSubcate" ng-disabled="formSubcate.$invalid" ng-click="salvarSubcategoria(subcategoria)">Salvar</a>
+			</form>
+		</div>
+	</div>
+	<div class="row" ng-controller="SubcategoriaAdminCtrl">
+		<div class="col-md-12 tableCateSubcate">
+		<table width="500">
+			<thead>
+				<tr>
+					<th>Categoria</th>
+					<th>Subcategoria</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="subcate in subcategorias">
+					<td>{{subcate.tipo}}</td>
+					<td>{{subcate.subcategoria}}</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>

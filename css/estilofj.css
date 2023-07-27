@@ -1,0 +1,143 @@
+.logoFluxojojn{
+	background-color: #3973ac;
+}
+
+.signin-form{
+	width: 100%;
+	margin-top: 10px;
+	padding-left: 25%;
+}
+
+.user{
+	width: 20%;
+	height: 10%;
+	display: inline-block;
+}
+
+.pass{
+	width: 20%;
+	height: 10%;
+	display: inline-block;
+}
+
+.usuario, .senha{
+	color: white;
+}
+
+.msgErroLogin{
+	color: white;
+	margin-left: 20%;
+}
+
+
+
+.links{
+	margin-left: 25%;
+}
+
+.infos{
+	margin-left: 20%;
+	margin-top: 100px;
+}
+
+.saldoAtual{
+
+}
+
+.valorEntrada{
+
+}
+
+.valorSaida{
+
+}
+
+.nomeEmpresa{
+	color: white;
+	height: 30px;
+	margin-top: 5px;
+}
+
+.nomeUsuario{
+	color: white;
+	width: 20%;
+	height: 30px;
+	margin-top: 20px;
+}
+
+
+
+
+#escondido{
+	color: #3973ac;
+	/*background-color: #f0f0f0;*/
+	width: 10%;
+	margin-left: 85%;
+	margin-top: -25px;
+}
+
+.formAdmin{
+	margin-top: 80px;
+	margin-left: 25%;
+}
+
+.adminEmail, .adminSenha{
+	width: 60%;
+}
+
+.botaoEntrarAdmin{
+	width: 60%;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.botaoVoltarAdmin{
+	width: 60%;
+}
+
+.titulo{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.categoria{
+	width: 50%;
+	margin-left: 30%;
+}
+
+.cate{
+	width: 45%;
+	display: inline-block;
+}
+
+.tituloCategoria{
+	margin-left: 35%;
+	margin-top: 20px;
+}
+
+.tipo{
+	width: 15%;
+	display: inline-block;
+}
+
+#tituloTipo, #dadoTipo{
+	padding-left: 40%;
+}
+
+.configTitulo{
+	text-align: center;
+}
+
+.linksFinanceiros{
+	text-align: center;
+}
+
+.deBens,.invest,.pagDiversos,.operFinan,.operAuto{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.debe{
+	text-align: center;
+	margin-top: 20px;
+}

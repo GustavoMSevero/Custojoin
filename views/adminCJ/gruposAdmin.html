@@ -1,0 +1,71 @@
+<style type="text/css">
+.formSubAdmin{
+	text-align: center;
+}
+
+.formSelect{
+	width: 15%;
+	display: inline-block;
+	margin-top: 60px;
+}
+.formInput{
+	width: 30%;
+	display: inline-block;
+	margin-top: 60px;
+}
+
+.botaoSalvarSubcate{
+	margin-top: 60px;
+}
+
+.tableCateSubcate{
+	margin-top: 30px;
+	width: 40%;
+	margin-left: 25%;
+}
+
+.botaoVoltarAreaAdmin{
+	width: 5%;
+	margin-left: 95%;
+}
+
+</style>
+<div class="container-fluid">
+	<div class="row logoFluxojojn">
+		<div class="col-md-12">
+			<div class="fluxojoin"><img src="imgs/fluxojoin.png"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<a class="btn btn-default botaoVoltarAreaAdmin" href="#/areaadmin">Voltar</a>
+		</div>
+	</div>
+	<div class="row" ng-controller="gruposAdminCJCtrl">
+		<div class="col-md-12 formGrupoAdmin">
+			<form name="formSubcate">
+				<input class="form-control formInput" type="number" name="code" ng-model="group.code" placeholder="Código">
+				<input class="form-control formInput" type="text" name="group" ng-model="group.group" placeholder="Grupo">
+				<a class="btn btn-success botaoSalvarSubcate" ng-disabled="formGrupoAdmin.$invalid" ng-click="safeGroup(group)">Salvar</a>
+			</form>
+		</div>
+	
+		<div class="col-md-12 tableCateSubcate">
+		<table width="500">
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Grupo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="gru in grupos">
+					<td>{{gru.codegroup}}</td>
+					<td>{{gru.groupname}}</td>
+					<!-- <td>{{gru.groupname}}</td> -->
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>
