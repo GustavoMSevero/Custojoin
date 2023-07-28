@@ -1,0 +1,20 @@
+
+.grupos {
+    width: 15%;
+    margin-left: 30%;
+}
+
+.categorias {
+    width: 15%;
+}
+
+.subcategorias {
+    width: 15%;
+    margin-left: 30%;
+    margin-top: 20px;
+}
+
+.contas {
+    width: 15%;
+    margin-top: 20px;
+}
