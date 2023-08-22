@@ -19,19 +19,30 @@ if($data){
 switch ($option) {
     case 'get categories':
         
-        $carregaGrupos=$pdo->prepare("SELECT * FROM categoria");
-        $carregaGrupos->execute();
+        $carregaCategoria=$pdo->prepare("SELECT * FROM categoria");
+        $carregaCategoria->execute();
 
         $return = array();
 
-        while ($linha=$carregaGrupos->fetch(PDO::FETCH_ASSOC)) {
+        while ($linha=$carregaCategoria->fetch(PDO::FETCH_ASSOC)) {
 
             $idcategory = $linha['idcategory'];
+            $codegroup = $linha['codegroup'];
             $codecategory = $linha['codecategory'];
             $categoryname = $linha['categoryname'];
 
+            $buscaGrupo=$pdo->prepare("SELECT groupname FROM grupo WHERE codegroup=:codegroup");
+            $buscaGrupo->bindValue(":codegroup", $codegroup);
+            $buscaGrupo->execute();
+
+            while ($linha=$buscaGrupo->fetch(PDO::FETCH_ASSOC)) {
+                $groupname = $linha['groupname'];
+            }
+
             $return[] = array(
                 'idcategory'	=> $idcategory,
+                'codegroup'	=> $codegroup,
+                'groupname'	=> $groupname,
                 'codecategory'	=> $codecategory,
                 'categoryname'	=> $categoryname
             );
