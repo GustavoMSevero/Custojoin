@@ -1,0 +1,50 @@
+
+<div class="container-fluid">
+	<div class="row logoFluxojojn">
+		<div class="col-md-12">
+			<div class="fluxojoin"><img src="imgs/fluxojoin.png"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<a class="btn btn-default botaoVoltarAreaAdmin" href="#/areaadmin">Voltar</a>
+		</div>
+	</div>
+	<div class="row" ng-controller="contaAdminCJCtrl">
+		<div class="col-md-12 formSubAdmin">
+			<form name="formSubcate">
+                <select class="form-control formSelect" name="" id="" ng-model="conta.codeSubcategory">
+                    <option ng-repeat="subcate in subcategories" value="{{subcate.codeSubcategory}}">{{subcate.subcategoria}}</option>
+                </select>
+				<input class="form-control formInput" type="text" name="codeSubcategoria" ng-model="conta.codeconta" placeholder="Cód. Conta">
+				<input class="form-control formInput" type="text" name="subcategoria" ng-model="conta.conta" placeholder="Conta">
+				<a class="btn btn-success botaoSalvarSubcate" ng-click="saveConta(conta)">Salvar</a>
+			</form>
+		</div>
+		<div class="col-md-12 tableCateSubcate">
+		<table>
+			<thead>
+				<tr>
+					<th id="codSubcategoria">Cód. Subcategoria</th>
+					<th id="subcategoria">Subcategoria</th>
+					<th id="codConta">Cód Conta</th>
+					<th id="Conta">Conta</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="conta in contas">
+					<td>{{conta.codesubcategoria}}</td>
+					<td>{{conta.subcategoria}}</td>
+					<td>{{conta.codeconta}}</td>
+					<td>{{conta.conta}}</td>
+					<td align="right"><a class="btn btn-sm btn-warning" 
+						href="#/editarConta/{{contas.idconta}}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+					</td>
+					<td align="right"><a class="btn btn-sm btn-danger" ng-click="apagarBanco(banco.idbanco)"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<div ng-repeat="x in lista">
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>
