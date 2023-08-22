@@ -4,7 +4,7 @@ app.controller("editarCategoriaAdminCJCtrl", function ($scope, $http, $routePara
 
     var getGroups = function(){
         var option = 'get groups';
-		$http.get('http://localhost:8880/web/Custojoin/php/adminCJ/grupoAdminCJ.php?option='+option).success(function(data){
+		$http.get('http://localhost:8880/web/Custojoin2/php/adminCJ/grupoAdminCJ.php?option='+option).success(function(data){
 			$scope.groups = data;
 		});
 	}
