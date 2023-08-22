@@ -33,6 +33,10 @@ app.config(function($routeProvider, $locationProvider){
         templateUrl: "views/adminCJ/subcategoriaAdmin.html",
     })
 
+    .when("/contaAdmin", {
+        templateUrl: "views/adminCJ/contaAdmin.html",
+    })
+
     .when("/editarCategoria/:idcategory", {
         templateUrl: "views/adminCJ/editarCategoria.html",
     })
