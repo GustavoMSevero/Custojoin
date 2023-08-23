@@ -45,5 +45,9 @@ app.config(function($routeProvider, $locationProvider){
         templateUrl: "views/adminCJ/editarSubcategoria.html",
     })
 
+    .when("/cadastra_empresa", {
+        templateUrl: "views/cadastra_empresa.html",
+    })
+
     
 });
