@@ -2,48 +2,49 @@
 ini_set('display_errors', true);
 error_reporting(E_ALL);
 
-include_once("con.php");
+include_once("adminCJ/con.php");
 
 $pdo = conectar();
 
 $data = file_get_contents("php://input");
 $data = json_decode($data);
 
-
 $opcao = $data->opcao;
 
 switch ($opcao) {
-	case 'cadEmpresa':
+	case 'cadastrar empresa':
 
-		$empresa = $data->nome;
+		// print_r($data);
+		$nome_empresa = $data->nome;
 		$endereco = $data->endereco;
 		$telefone = $data->telefone;
 		$cidade = $data->cidade;
-		$estado = $data->estado;
+		$uf = $data->uf;
 		$cnpj = $data->cnpj;
-		$iestadual = $data->iestadual;
+		$ie = $data->ie;
+		$email = $data->email;
+		$senha = md5($data->senha);
 
-		$empresa = utf8_decode($empresa);
-		$endereco = utf8_decode($endereco);
-		$cidade = utf8_decode($cidade);
-
-		$insereEmpresa=$pdo->prepare("INSERT INTO empresa (idempresa, empresa, cnpj, endereco, telefone, iestadual, cidade, uf) 
-									  VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+		$insereEmpresa=$pdo->prepare("INSERT INTO empresa (id, empresa, endereco, telefone, cidade, uf, cnpj, ie, email, senha)
+										VALUES (?,?,?,?,?,?,?,?,?,?)");
 		$insereEmpresa->bindValue(1, NULL);
-		$insereEmpresa->bindValue(2, $empresa);
-		$insereEmpresa->bindValue(3, $cnpj);
-		$insereEmpresa->bindValue(4, $endereco);
-		$insereEmpresa->bindValue(5, $telefone);
-		$insereEmpresa->bindValue(6, $iestadual);
-		$insereEmpresa->bindValue(7, $cidade);
-		$insereEmpresa->bindValue(8, $estado);
+		$insereEmpresa->bindValue(2, $nome_empresa);
+		$insereEmpresa->bindValue(3, $endereco);
+		$insereEmpresa->bindValue(4, $telefone);
+		$insereEmpresa->bindValue(5, $cidade);
+		$insereEmpresa->bindValue(6, $uf);
+		$insereEmpresa->bindValue(7, $cnpj);
+		$insereEmpresa->bindValue(8, $ie);
+		$insereEmpresa->bindValue(9, $email);
+		$insereEmpresa->bindValue(10, $senha);
 		$insereEmpresa->execute();
 		$idempresa = $pdo->lastInsertId();
 
 		$return = array(
 			'idempresa' => $idempresa,
-			'empresa' => $empresa,
-			'status' => "Empresa cadastrada"
+			'empresa' => $nome_empresa,
+			'msg' => "Empresa cadastrada",
+			'status' => 1
 		);
 
 		echo json_encode($return);
@@ -83,6 +84,33 @@ switch ($opcao) {
 			'empresa' => $empresa,
 			'msgAtualEmpresaSucesso' => "Empresa atualizada com sucesso"
 		);
+
+		echo json_encode($return);
+
+		break;
+
+	case 'logar':
+		
+		// print_r($data);
+		$email = $data->email;
+		$senha = md5($data->senha);
+
+		$buscaEmpresa=$pdo->prepare("SELECT * FROM empresa WHERE email=:email AND senha=:senha");
+		$buscaEmpresa->bindValue("email", $email);
+		$buscaEmpresa->bindValue("senha", $senha);
+		$buscaEmpresa->execute();
+
+		while ($linha=$buscaEmpresa->fetch(PDO::FETCH_ASSOC)) {
+			$id = $linha['id'];
+			$empresa = $linha['empresa'];
+		}
+
+		$return = array(
+			'id' => $id,
+			'empresa' => $empresa,
+			'status' => 1
+		);
+
 
 		echo json_encode($return);
 
