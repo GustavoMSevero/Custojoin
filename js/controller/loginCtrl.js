@@ -1,31 +1,23 @@
-app.controller("LoginCtrl", function ($scope, $http, $window, $location, $rootScope, localStorageService) {
+app.controller("LoginCtrl", function ($scope, $http, $location, $rootScope) {
 
 	$scope.logar = function(usuario){
 
 		var opcao = 'logar';
 		usuario.opcao = opcao;
 
-		$http.post('http://localhost:8888/sistemas/webApps/fluxo_de_caixa/fluxojoin_2.0/php/usuario.php', usuario).success(function (data){
-			//console.log(data);
-			if(data == '' || data == [] || data == 'null' || data == 'undefined'){
-				$scope.msgErro = "E-mail ou senha inválido";
-				return;
+		$http.post('http://localhost:8880/web/Custojoin2/php/empresa.php', usuario).success(function (data){
+			if (data.status == "") {
 
-			}else if(typeof(Storage) !== "undefined") {
-				//console.log(data);
-				localStorage.setItem('empresa', data.empresa);
-				localStorage.setItem('idempresa', data.idempresa);
-				localStorage.setItem('usuario', data.usuario);
-				localStorage.setItem('idusuario', data.idusuario);
+				alert("E-mail ou senha inválido");
 
-				$rootScope.usuario = $scope.usuario = data.usuario;
-				$rootScope.idusuario = $scope.idusuario = data.idusuario;
-				$rootScope.empresa = $scope.empresa = data.empresa;
-				$rootScope.idempresa = $scope.idempresa = data.idempresa;
-				
-				$location.path('/inicial');
-			} else {
-			    console.log("Desculpe, mas o navegador nao possui suporte a Web Storage.");
+			} else if(typeof(Storage) !== "undefined") {
+					localStorage.setItem('empresa', data.empresa);
+					localStorage.setItem('id', data.id)
+
+					$rootScope.empresa = data.empresa;
+					$rootScope.id = data.id;
+
+					$location.path('/inicial');
 			}
 		});
 	};
