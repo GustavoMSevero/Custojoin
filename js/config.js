@@ -49,5 +49,13 @@ app.config(function($routeProvider, $locationProvider){
         templateUrl: "views/cadastra_empresa.html",
     })
 
+    .when("/importacao", {
+        templateUrl: "views/importacao.html",
+    })
+
+    .when("/contas", {
+        templateUrl: "views/contas.html",
+    })
+
     
 });
