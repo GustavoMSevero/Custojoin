@@ -1,0 +1,16 @@
+
+.links {
+    display: inline-block;
+    /* background-color: aqua; */
+    width: 60%;
+}
+
+#contas {
+    display: inline-block;
+    width: 20%;
+}
+
+#importacao {
+    display: inline-block;
+    width: 20%;
+}
