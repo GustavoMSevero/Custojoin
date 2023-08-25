@@ -1,8 +1,13 @@
 
-.links {
+.link {
     display: inline-block;
     /* background-color: aqua; */
     width: 60%;
+}
+
+#inicial {
+    display: inline-block;
+    width: 20%;
 }
 
 #contas {
