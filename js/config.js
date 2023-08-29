@@ -57,5 +57,9 @@ app.config(function($routeProvider, $locationProvider){
         templateUrl: "views/contas.html",
     })
 
+    .when("/plano_contas", {
+        templateUrl: "views/plano_contas.html",
+    })
+
     
 });
