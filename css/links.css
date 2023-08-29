@@ -1,0 +1,25 @@
+.link {
+    display: inline-block;
+    background-color: aqua;
+    width: 80%;
+}
+
+#inicial {
+    display: inline-block;
+    width: 10%;
+}
+
+#contas {
+    display: inline-block;
+    width: 10%;
+}
+
+#importacao {
+    display: inline-block;
+    width: 10%;
+}
+
+#plano_contas {
+    display: inline-block;
+    width: 10%;
+}
