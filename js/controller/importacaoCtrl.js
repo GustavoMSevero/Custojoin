@@ -1,12 +1,35 @@
-app.controller("ImportacaoCtrl", function ($scope, $http, $window, $rootScope) {
+app.controller("ImportacaoCtrl", function ($scope, $rootScope) {
+
+	var formData = new FormData();
 
 	$scope.id = $rootScope.idempresa = localStorage.getItem('id');
 	$scope.empresa = $rootScope.empresa = localStorage.getItem('empresa');
 
-	$scope.sair = function(){
-		localStorage.clear();
-		//localStorage.removeItem(usuarioEmp);
+	$scope.uploadExcel = function(){
+		$scope.input.click();
 	}
+
+	$scope.input = document.createElement("INPUT");
+	$scope.input.setAttribute("type", "file");
+	$scope.input.addEventListener('change', function(){
+	formData.append('file_xls', $scope.input.files[0]);
+
+		$.ajax({
+		url: 'http://localhost:8880/web/Custojoin2/php/importaArquivo.php?idempresa='+id,
+		data: formData,
+		type: 'POST',
+		contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+		processData: false
+		}) // NEEDED, DON'T OMIT THIS
+		// ... Other options like success and etc
+		.then(function successCallback(response) {
+			console.log(response);
+			//$scope.msg = response.msg;
+			//alert(response);
+	}, function errorCallback(response) {
+		console.log("Error "+response);
+	});
+});
 
 
 
