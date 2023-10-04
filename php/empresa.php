@@ -22,11 +22,12 @@ switch ($opcao) {
 		$uf = $data->uf;
 		$cnpj = $data->cnpj;
 		$ie = $data->ie;
+		$usuario = $data->usuario;
 		$email = $data->email;
 		$senha = md5($data->senha);
 
-		$insereEmpresa=$pdo->prepare("INSERT INTO empresa (id, empresa, endereco, telefone, cidade, uf, cnpj, ie, email, senha)
-										VALUES (?,?,?,?,?,?,?,?,?,?)");
+		$insereEmpresa=$pdo->prepare("INSERT INTO empresa (id, empresa, endereco, telefone, cidade, uf, cnpj, ie, usuario, email, senha)
+										VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 		$insereEmpresa->bindValue(1, NULL);
 		$insereEmpresa->bindValue(2, $nome_empresa);
 		$insereEmpresa->bindValue(3, $endereco);
@@ -35,8 +36,9 @@ switch ($opcao) {
 		$insereEmpresa->bindValue(6, $uf);
 		$insereEmpresa->bindValue(7, $cnpj);
 		$insereEmpresa->bindValue(8, $ie);
-		$insereEmpresa->bindValue(9, $email);
-		$insereEmpresa->bindValue(10, $senha);
+		$insereEmpresa->bindValue(9, $usuario);
+		$insereEmpresa->bindValue(10, $email);
+		$insereEmpresa->bindValue(11, $senha);
 		$insereEmpresa->execute();
 		$idempresa = $pdo->lastInsertId();
 
