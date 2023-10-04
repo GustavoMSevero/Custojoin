@@ -105,11 +105,13 @@ switch ($opcao) {
 		while ($linha=$buscaEmpresa->fetch(PDO::FETCH_ASSOC)) {
 			$id = $linha['id'];
 			$empresa = $linha['empresa'];
+			$usuario = $linha['usuario'];
 		}
 
 		$return = array(
 			'id' => $id,
 			'empresa' => $empresa,
+			'usuario' => $usuario,
 			'status' => 1
 		);
 
