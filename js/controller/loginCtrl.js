@@ -13,9 +13,11 @@ app.controller("LoginCtrl", function ($scope, $http, $location, $rootScope) {
 			} else if(typeof(Storage) !== "undefined") {
 					localStorage.setItem('empresa', data.empresa);
 					localStorage.setItem('id', data.id)
+					localStorage.setItem('usuario', data.usuario)
 
 					$rootScope.empresa = data.empresa;
 					$rootScope.id = data.id;
+					$rootScope.usuario = data.usuario;
 
 					$location.path('/inicial');
 			}
