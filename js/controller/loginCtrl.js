@@ -4,23 +4,22 @@ app.controller("LoginCtrl", function ($scope, $http, $location, $rootScope) {
 
 		var opcao = 'logar';
 		usuario.opcao = opcao;
-
 		$http.post('http://localhost:8880/web/Custojoin2/php/empresa.php', usuario).success(function (data){
-			if (data.status == "") {
+			if (data.status == 0) {
+				alert(data.message);
 
-				alert("E-mail ou senha inválido");
+			} else { 
+				if(typeof(Storage) !== "undefined") {
+				localStorage.setItem('empresa', data.empresa);
+				localStorage.setItem('id', data.id)
+				localStorage.setItem('usuario', data.usuario)
 
-			} else if(typeof(Storage) !== "undefined") {
-					localStorage.setItem('empresa', data.empresa);
-					localStorage.setItem('id', data.id)
-					localStorage.setItem('usuario', data.usuario)
+				$rootScope.empresa = data.empresa;
+				$rootScope.id = data.id;
+				$rootScope.usuario = data.usuario;
 
-					$rootScope.empresa = data.empresa;
-					$rootScope.id = data.id;
-					$rootScope.usuario = data.usuario;
-
-					$location.path('/inicial');
-			}
+				$location.path('/inicial');
+			}}
 		});
 	};
 });
