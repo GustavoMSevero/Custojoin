@@ -97,26 +97,46 @@ switch ($opcao) {
 		$email = $data->email;
 		$senha = md5($data->senha);
 
-		$buscaEmpresa=$pdo->prepare("SELECT * FROM empresa WHERE email=:email AND senha=:senha");
-		$buscaEmpresa->bindValue("email", $email);
-		$buscaEmpresa->bindValue("senha", $senha);
-		$buscaEmpresa->execute();
+		$searchUser=$pdo->prepare("SELECT * FROM empresa WHERE email=:email AND senha=:senha");
+		$searchUser->bindValue("email", $email);
+		$searchUser->bindValue("senha", $senha);
+		$searchUser->execute();
+		$numRows = $searchUser->rowCount();
 
-		while ($linha=$buscaEmpresa->fetch(PDO::FETCH_ASSOC)) {
-			$id = $linha['id'];
-			$empresa = $linha['empresa'];
-			$usuario = $linha['usuario'];
+		$return = array();
+
+		if($numRows == 0) {
+			$message = "Email e senha invalidos";
+			$return = array(
+				'status' => 0,
+				'message' => $message
+			);
+
+			echo json_encode($return);
+
+		} else {
+
+			$buscaEmpresa=$pdo->prepare("SELECT * FROM empresa WHERE email=:email AND senha=:senha");
+			$buscaEmpresa->bindValue("email", $email);
+			$buscaEmpresa->bindValue("senha", $senha);
+			$buscaEmpresa->execute();
+
+			while ($linha=$buscaEmpresa->fetch(PDO::FETCH_ASSOC)) {
+				$id = $linha['id'];
+				$empresa = $linha['empresa'];
+				$usuario = $linha['usuario'];
+			}
+
+			$return = array(
+				'id' => $id,
+				'empresa' => $empresa,
+				'usuario' => $usuario,
+				'status' => 1
+			);
+
+			echo json_encode($return);
+
 		}
-
-		$return = array(
-			'id' => $id,
-			'empresa' => $empresa,
-			'usuario' => $usuario,
-			'status' => 1
-		);
-
-
-		echo json_encode($return);
 
 		break;
 	
