@@ -1,7 +1,7 @@
 <style type="text/css">
 
 </style>
-<div class="container-fluid" ng-controller="InicialCtrl">
+<div class="container-fluid" ng-controller="contas_importadasCtrl">
 	<div class="row logoFluxojojn">
 		<div class="col-md-6">
 			<div class="fluxojoin"><img src="imgs/fluxojoin.png"></div>
@@ -17,7 +17,28 @@
 	<div ng-include="'views/links.html'"></div>
 	
 	<div class="row">
-		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<table class="table" id="exibe_contas_importadas">
+				<thead>
+				  <tr>
+					<th scope="col">Data</th>
+					<th scope="col">Código</th>
+					<th scope="col">Tipo</th>
+					<th scope="col">Valor</th>
+					<th scope="col">Descrição</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="ci in contas_importadas">
+					<td width="150">{{ci.data}}</td>
+					<td>{{ci.codigo}}</td>
+					<td>{{ci.tipo}}</td>
+					<td>{{ci.valor}}</td>
+					<td width="550">{{ci.descricao}}</td>
+				  </tr>
+				</tbody>
+			  </table>
+		</div>
 		<div class="col-md-4"></div>
 		<div class="col-md-4"></div>
 	</div>
