@@ -13,7 +13,7 @@ app.controller("AdicionarContaCtrl", function ($scope, $http, $window, $rootScop
 
 	$scope.salvarContaEntrada = function(contaEntrada){
 		contaEntrada.idempresa = idempresa;
-		$http.post("http://localhost:8888/sistemas/webApps/fluxo_de_caixa/fluxojoin_2.0/php/admin/contaEntradaAdmin.php", contaEntrada).success(function(data){
+		$http.post("http://localhost:8888/sistemas/webApps/fluxo_de_caixa/custojoin_2.0/php/admin/contaEntradaAdmin.php", contaEntrada).success(function(data){
 			$scope.contaEntrada = {};
 			pegaContasEntrada();
 		});
@@ -23,7 +23,7 @@ app.controller("AdicionarContaCtrl", function ($scope, $http, $window, $rootScop
 
 	$scope.salvarContaSaida = function(contaSaida){
 		contaSaida.idempresa = idempresa;
-		$http.post("http://localhost:8888/sistemas/webApps/fluxo_de_caixa/fluxojoin_2.0/php/admin/contaSaidaAdmin.php", contaSaida).success(function(data){
+		$http.post("http://localhost:8888/sistemas/webApps/fluxo_de_caixa/custojoin_2.0/php/admin/contaSaidaAdmin.php", contaSaida).success(function(data){
 			$scope.contaSaida = {};
 			pegaContasSaida();
 		});
@@ -35,7 +35,7 @@ app.controller("AdicionarContaCtrl", function ($scope, $http, $window, $rootScop
 			'idempresa':idempresa
 		};
 
-		$http.post("http://localhost:8888/sistemas/webApps/fluxo_de_caixa/fluxojoin_2.0/php/admin/pegaContasEntradaAdmin.php", data).success(function(data){
+		$http.post("http://localhost:8888/sistemas/webApps/fluxo_de_caixa/custojoin_2.0/php/admin/pegaContasEntradaAdmin.php", data).success(function(data){
 			$scope.contasEntrada = data;
 		});
 	}
@@ -50,7 +50,7 @@ app.controller("AdicionarContaCtrl", function ($scope, $http, $window, $rootScop
 		 'idempresa':idempresa
 		};
 
-		$http.post("http://localhost:8888/sistemas/webApps/fluxo_de_caixa/fluxojoin_2.0/php/admin/pegaContasSaidaAdmin.php", data).success(function(data){
+		$http.post("http://localhost:8888/sistemas/webApps/fluxo_de_caixa/custojoin_2.0/php/admin/pegaContasSaidaAdmin.php", data).success(function(data){
 			$scope.contasSaida = data;
 		})
 
