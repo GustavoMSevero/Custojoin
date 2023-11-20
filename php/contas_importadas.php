@@ -8,7 +8,14 @@ $pdo = conectar();
 
 $idempresa = $_GET['idempresa'];
 
-// echo $idempresa;
+// $data = file_get_contents("php://input");
+// $data = json_decode($data);
+
+// if($data){
+// 	$option = $data->option;
+// }else{
+// 	$option = $_GET['option'];
+// }
 
 $pegarContasImportadas=$pdo->prepare("SELECT * FROM conta_importada WHERE idempresa=:idempresa");
 $pegarContasImportadas->bindValue(":idempresa", $idempresa);
