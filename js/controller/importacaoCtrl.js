@@ -1,4 +1,4 @@
-app.controller("importacaoCtrl", function ($scope, $rootScope) {
+app.controller("importacaoCtrl", function ($scope, $rootScope, $route) {
 
 	var formData = new FormData();
 
@@ -24,7 +24,8 @@ app.controller("importacaoCtrl", function ($scope, $rootScope) {
 			// ... Other options like success and etc
 			.then(function successCallback(response) {
 				console.log(response);
-				
+				alert(response.message)
+				$route.reload();
 		}, function errorCallback(response) {
 			console.log("Error "+response);
 		});
