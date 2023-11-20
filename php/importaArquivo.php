@@ -25,6 +25,7 @@ if (
 
 $uploadfile = $uploadDir . $_FILES['file_xls']['name'];
 
+$allReadyImported = false;
 
 if(move_uploaded_file($_FILES['file_xls']['tmp_name'], $uploadfile)) {
   if ( $xlsx = SimpleXLSX::parse($uploadfile) ) {
@@ -58,13 +59,7 @@ if(move_uploaded_file($_FILES['file_xls']['tmp_name'], $uploadfile)) {
 
       if ($numRows > 0) {
         // echo "Dados já importados";
-        $message = "Dados ja importados";
-
-        $return = array(
-          'message' => $message
-        );
-        
-        echo json_encode($return);
+        $allReadyImported = true;
   
       } else {
         $insert=$pdo->prepare("INSERT INTO conta_importada (idconta, idempresa, data, codigo, tipo, valor, descricao) VALUES(?,?,?,?,?,?,?)");
@@ -78,6 +73,17 @@ if(move_uploaded_file($_FILES['file_xls']['tmp_name'], $uploadfile)) {
         $insert->execute();
       }
       
+    }
+
+    if ($allReadyImported == true) {
+
+        $message = "Dados ja importados";
+
+        $return = array(
+          'message' => $message
+        );
+        
+        echo json_encode($return);
     }
   } else {
     echo SimpleXLSX::parseError();
