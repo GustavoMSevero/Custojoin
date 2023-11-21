@@ -24,14 +24,17 @@ $pegarContasImportadas->execute();
 while ($linha=$pegarContasImportadas->fetch(PDO::FETCH_ASSOC)) {
 
     $dataP = explode('-', $linha['data']);
+    $valor = $linha['valor'];
     $data = $dataP[2].'/'.$dataP[1].'/'.$dataP[0];
+
+    $valor = number_format($valor,2,",",".");
 
     $return[] = array(
         'idconta'	=> $linha['idconta'],
         'data'	=>  $data,
         'codigo'	=> $linha['codigo'],
         'tipo'	=> $linha['tipo'],
-        'valor'	=> $linha['valor'],
+        'valor'	=> $valor,
         'descricao'	=> utf8_encode($linha['descricao']),
     );
 
