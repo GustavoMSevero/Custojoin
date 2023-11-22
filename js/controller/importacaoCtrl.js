@@ -23,8 +23,9 @@ app.controller("importacaoCtrl", function ($scope, $rootScope, $route) {
 			}) // NEEDED, DON'T OMIT THIS
 			// ... Other options like success and etc
 			.then(function successCallback(response) {
-				console.log(response);
-				alert(response)
+				// console.log(response);
+				// console.log(JSON.parse(response).message)
+				alert(JSON.parse(response).message)
 				$route.reload();
 		}, function errorCallback(response) {
 			console.log("Error "+response);
