@@ -24,7 +24,7 @@ app.controller("importacaoCtrl", function ($scope, $rootScope, $route) {
 			// ... Other options like success and etc
 			.then(function successCallback(response) {
 				console.log(response);
-				alert(response.message)
+				alert(response)
 				$route.reload();
 		}, function errorCallback(response) {
 			console.log("Error "+response);
