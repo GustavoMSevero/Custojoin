@@ -84,7 +84,17 @@ if(move_uploaded_file($_FILES['file_xls']['tmp_name'], $uploadfile)) {
         );
         
         echo json_encode($return);
+    } else {
+
+      $message = "Dados importados com sucesso.";
+  
+      $return = array(
+        'message' => $message
+      );
+      
+      echo json_encode($return);
     }
+
   } else {
     echo SimpleXLSX::parseError();
   }
