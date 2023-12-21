@@ -65,5 +65,9 @@ app.config(function($routeProvider, $locationProvider){
         templateUrl: "views/contas_importadas.html",
     })
 
+    .when("/relatorios", {
+        templateUrl: "views/relatorios.html",
+    })
+
     
 });
