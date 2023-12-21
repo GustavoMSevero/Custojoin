@@ -1,0 +1,13 @@
+
+.form_consulta {
+    margin-top: 30px;
+}
+
+#titulo_mes {
+    display: inline-block;
+}
+
+.mes_numero {
+    display: inline-block;
+    width: 10%;
+}
