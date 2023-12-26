@@ -5,9 +5,20 @@
 
 #titulo_mes {
     display: inline-block;
+    margin-left: 50%;
 }
 
 .mes_numero {
+    display: inline-block;
+    width: 10%;
+}
+
+.dia_numero {
+    display: inline-block;
+    width: 10%;
+}
+
+.ano_numero {
     display: inline-block;
     width: 10%;
 }
