@@ -3,11 +3,6 @@
     margin-top: 30px;
 }
 
-#titulo_mes {
-    display: inline-block;
-    margin-left: 50%;
-}
-
 .mes_numero {
     display: inline-block;
     width: 10%;
