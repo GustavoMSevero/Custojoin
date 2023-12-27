@@ -22,12 +22,6 @@
 	<div class="row">
 		<div class="col-md-6" ng-controller="relatoriosCtrl">
             <form name="consulta" class="form_consulta">
-                <div id="titulo_mes">
-                    mês
-                </div>
-                <select class="form-control dia_numero" name="mes" ng-model="data.dia" id="">
-                    <option value="01">01</option>
-                </select>
                 <select class="form-control mes_numero" name="mes" ng-model="data.mes" id="">
                     <option value="01">Jan</option>
                     <option value="02">Fev</option>
@@ -47,9 +41,6 @@
                     <option value="2020">2020</option>
                     <option value="2022">2022</option>
                     <option value="2023">2023</option>
-                    <!-- <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option> -->
                 </select>
                 <button class="btn btn-success" ng-disabled="consulta.$invalid" ng-click="consultar(data)">Consultar</button>
             </form>
