@@ -7,7 +7,7 @@ app.controller("relatoriosCtrl", function ($scope, $http, $rootScope) {
 	$scope.empresa = empresa;
 	$scope.usuario = usuario;
     
-    $scope.consultar = function(data) {
+    $scope.salvar = function(data) {
         data.idempresa = idempresa;
         // console.log(data)
         $http.post('http://localhost:8880/web/Custojoin2/php/relatorio_mensal.php', data).success(function(response) {
