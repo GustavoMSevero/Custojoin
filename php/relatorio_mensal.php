@@ -28,6 +28,13 @@ $numOfRows = $checkIfExists->rowCount();
 
 if ($numOfRows > 0) {
 
+    $return = array(
+        'mes'	=> $mes,
+        'ano'	=> $ano
+    );
+
+    echo json_encode($return);
+
 } else {
 
     $monthlyReport=$pdo->prepare("INSERT INTO relatorios (mes, idempresa, codigo, descricao, valor_total)
@@ -42,6 +49,13 @@ if ($numOfRows > 0) {
     $monthlyReport->bindValue(":mes", $mes);
     $monthlyReport->bindValue(":ano", $ano);
     $monthlyReport->execute();
+
+    $return = array(
+        'mes'	=> $mes,
+        'ano'	=> $ano
+    );
+
+    echo json_encode($return);
 }
 
 
