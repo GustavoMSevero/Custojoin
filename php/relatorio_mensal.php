@@ -10,7 +10,6 @@ $data = file_get_contents("php://input");
 $data = json_decode($data);
 
 $idempresa = $data->idempresa;
-// $dia = $data->dia;
 $mes = $data->mes;
 $ano = $data->ano;
 
