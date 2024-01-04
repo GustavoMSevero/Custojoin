@@ -44,7 +44,22 @@
                 </select>
                 <button class="btn btn-success" ng-disabled="consulta.$invalid" ng-click="salvar(data)">Salvar</button>
             </form>
-
+            <table>
+                <thead>
+                    <tr>
+                        <td>Código</td>
+                        <td>Descrição</td>
+                        <td>Valor Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="rm in relatorioMensal">
+                        <td width="100">{{rm.codigo}}</td>
+                        <td>{{rm.descricao}}</td>
+                        <td align="right">{{rm.valor_total}}</td>
+                    </tr>
+                </tbody>
+            </table>
 		</div>
 		<div class="col-md-4"></div>
 		<div class="col-md-4"></div>
