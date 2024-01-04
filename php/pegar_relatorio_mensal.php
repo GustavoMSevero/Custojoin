@@ -21,7 +21,7 @@ $pegarRelatorio->bindValue(":ano", $ano);
 $pegarRelatorio->execute();
 
 
-while ($linha=$getReport->fetch(PDO::FETCH_ASSOC)) {
+while ($linha=$pegarRelatorio->fetch(PDO::FETCH_ASSOC)) {
 
     $codigo = $linha['codigo'];
     $descricao = $linha['descricao'];
