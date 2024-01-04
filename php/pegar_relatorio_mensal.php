@@ -10,15 +10,15 @@ $idempresa = $_GET['idempresa'];
 $mes = $_GET['mes'];
 $ano = $_GET['ano'];
 
-$getReport=$pdo->prepare("SELECT *
+$pegarRelatorio=$pdo->prepare("SELECT *
                         FROM relatorios 
                         WHERE idempresa=:idempresa
                         AND MONTH(mes)=:mes
                         AND YEAR(mes)=:ano");
-$getReport->bindValue(":idempresa", $idempresa);
-$getReport->bindValue(":mes", $mes);
-$getReport->bindValue(":ano", $ano);
-$getReport->execute();
+$pegarRelatorio->bindValue(":idempresa", $idempresa);
+$pegarRelatorio->bindValue(":mes", $mes);
+$pegarRelatorio->bindValue(":ano", $ano);
+$pegarRelatorio->execute();
 
 
 while ($linha=$getReport->fetch(PDO::FETCH_ASSOC)) {
