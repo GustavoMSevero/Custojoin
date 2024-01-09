@@ -42,8 +42,7 @@ if ($numOfRows > 0) {
                                     WHERE idempresa=:idempresa
                                     AND MONTH(data)=:mes
                                     AND YEAR(data)=:ano
-                                    GROUP BY data, codigo, descricao 
-                                    ORDER BY data, codigo");
+                                    GROUP BY data, codigo, descricao");
     $monthlyReport->bindValue(":idempresa", $idempresa);
     $monthlyReport->bindValue(":mes", $mes);
     $monthlyReport->bindValue(":ano", $ano);
@@ -56,28 +55,5 @@ if ($numOfRows > 0) {
 
     echo json_encode($return);
 }
-
-
-
-// while ($linha=$relatorioMensal->fetch(PDO::FETCH_ASSOC)) {
-
-//     $codigo = $linha['codigo'];
-//     $descricao = $linha['descricao'];
-//     $valor_total = $linha['valor_total'];
-
-//     $valor_total = number_format($valor_total,2,",",".");
-
-//     $return[] = array(
-//         'codigo'	=> $codigo,
-//         'descricao'	=> $descricao,
-//         'valor_total'	=> $valor_total
-//     );
-
-// }
-
-// echo json_encode($return);
-
-
-
 
 ?>
