@@ -13,19 +13,19 @@ $idempresa = $data->idempresa;
 $mes = $data->mes;
 $ano = $data->ano;
 
-$checkIfExists=$pdo->prepare("SELECT *
+$checaSeExiste=$pdo->prepare("SELECT *
                                 FROM relatorios 
                                 WHERE idempresa=:idempresa
                                 AND MONTH(mes)=:mes
                                 AND YEAR(mes)=:ano");
-$checkIfExists->bindValue(":idempresa", $idempresa);
-$checkIfExists->bindValue(":mes", $mes);
-$checkIfExists->bindValue(":ano", $ano);
-$checkIfExists->execute();
+$checaSeExiste->bindValue(":idempresa", $idempresa);
+$checaSeExiste->bindValue(":mes", $mes);
+$checaSeExiste->bindValue(":ano", $ano);
+$checaSeExiste->execute();
 
-$numOfRows = $checkIfExists->rowCount();
+$numeroDeLinhas = $checaSeExiste->rowCount();
 
-if ($numOfRows > 0) {
+if ($numeroDeLinhas > 0) {
 
     $return = array(
         'mes'	=> $mes,
@@ -36,17 +36,17 @@ if ($numOfRows > 0) {
 
 } else {
 
-    $monthlyReport=$pdo->prepare("INSERT INTO relatorios (mes, idempresa, codigo, descricao, valor_total)
+    $relatorioMensal=$pdo->prepare("INSERT INTO relatorios (mes, idempresa, codigo, descricao, valor_total)
                                     SELECT data, idempresa, codigo, descricao, SUM(valor) AS valor_total 
                                     FROM conta_importada 
                                     WHERE idempresa=:idempresa
                                     AND MONTH(data)=:mes
                                     AND YEAR(data)=:ano
                                     GROUP BY data, codigo, descricao");
-    $monthlyReport->bindValue(":idempresa", $idempresa);
-    $monthlyReport->bindValue(":mes", $mes);
-    $monthlyReport->bindValue(":ano", $ano);
-    $monthlyReport->execute();
+    $relatorioMensal->bindValue(":idempresa", $idempresa);
+    $relatorioMensal->bindValue(":mes", $mes);
+    $relatorioMensal->bindValue(":ano", $ano);
+    $relatorioMensal->execute();
 
     $return = array(
         'mes'	=> $mes,
