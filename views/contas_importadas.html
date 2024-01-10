@@ -27,6 +27,7 @@
 					<td>
 						filtrar por 
 						<input type="text" ng-model="descricao" placeholder="descrição">
+						<input type="text" ng-model="codigo" placeholder="código">
 					</td>
 				  <tr>
 					<th scope="col">Data</th>
@@ -38,7 +39,7 @@
 				  </tr>
 				</thead>
 				<tbody>
-				  <tr ng-repeat="ci in contas_importadas | filter: descricao">
+				  <tr ng-repeat="ci in contas_importadas | filter: descricao | filter: codigo">
 					<td width="150">{{ci.data}}</td>
 					<td>{{ci.codigo}}</td>
 					<td>{{ci.tipo}}</td>
