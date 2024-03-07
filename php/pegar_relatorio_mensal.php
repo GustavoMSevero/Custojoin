@@ -10,11 +10,13 @@ $idempresa = $_GET['idempresa'];
 $mes = $_GET['mes'];
 $ano = $_GET['ano'];
 
+// $mes = (int)$mes;
+
 $pegarRelatorio=$pdo->prepare("SELECT *
-                        FROM relatorios 
-                        WHERE idempresa=:idempresa
-                        AND MONTH(mes)=:mes
-                        AND YEAR(mes)=:ano");
+                                FROM relatorios
+                                WHERE idempresa=:idempresa
+                                AND mes=:mes
+                                AND ano=:ano");
 $pegarRelatorio->bindValue(":idempresa", $idempresa);
 $pegarRelatorio->bindValue(":mes", $mes);
 $pegarRelatorio->bindValue(":ano", $ano);
@@ -25,14 +27,14 @@ while ($linha=$pegarRelatorio->fetch(PDO::FETCH_ASSOC)) {
 
     $codigo = $linha['codigo'];
     $descricao = $linha['descricao'];
-    $valor_total = $linha['valor_total'];
+    $valor = $linha['valor'];
 
-    $valor_total = number_format($valor_total,2,",",".");
+    $valor = number_format($valor,2,",",".");
 
     $return[] = array(
         'codigo'	=> $codigo,
         'descricao'	=> $descricao,
-        'valor_total'	=> $valor_total
+        'valor'	=> $valor
     );
 
 }
