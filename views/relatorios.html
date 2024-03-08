@@ -47,13 +47,17 @@
             <table>
                 <thead>
                     <tr>
-                        <td>Código</td>
-                        <td>Descrição</td>
-                        <td>Valor Total</td>
+                        <td><b>Mês</b></td>
+                        <td><b>Ano</b></td>
+                        <td><b>Código</b></td>
+                        <td><b>Descrição</b></td>
+                        <td><b>Valor Total</b></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="rm in relatorioMensal">
+                        <td width="50">{{rm.mes}}</td>
+                        <td width="50">{{rm.ano}}</td>
                         <td width="100">{{rm.codigo}}</td>
                         <td>{{rm.descricao}}</td>
                         <td align="right">{{rm.valor}}</td>
