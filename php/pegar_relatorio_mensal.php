@@ -28,13 +28,17 @@ while ($linha=$pegarRelatorio->fetch(PDO::FETCH_ASSOC)) {
     $codigo = $linha['codigo'];
     $descricao = $linha['descricao'];
     $valor = $linha['valor'];
+    $mes = $linha['mes'];
+    $ano = $linha['ano'];
 
     $valor = number_format($valor,2,",",".");
 
     $return[] = array(
         'codigo'	=> $codigo,
         'descricao'	=> $descricao,
-        'valor'	=> $valor
+        'valor'	=> $valor,
+        'mes'	=> $mes,
+        'ano'	=> $ano
     );
 
 }
