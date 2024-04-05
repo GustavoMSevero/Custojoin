@@ -15,7 +15,7 @@ app.controller("importacaoCtrl", function ($scope, $rootScope, $route) {
 		formData.append('file_xls', $scope.input.files[0]);
 
 			$.ajax({
-				url: 'http://localhost:8880/web/Custojoin2/php/importaArquivo.php?idempresa='+$scope.id,
+				url: 'http://localhost:8888/web/Custojoin2/php/importaArquivo.php?idempresa='+$scope.id,
 				data: formData,
 				type: 'POST',
 				contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)

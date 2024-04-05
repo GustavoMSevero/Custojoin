@@ -9,7 +9,7 @@ app.controller("contas_importadasCtrl", function ($scope, $http, $window, $rootS
 
     var pegarContasImportadas = function() {
         var opcao = 'pegar contas importadas';
-        $http.get("http://localhost:8880/web/Custojoin2/php/contas_importadas.php?opcao=" +opcao +"&idempresa="+ idempresa).success(function(data) {
+        $http.get("http://localhost:8888/web/Custojoin2/php/contas_importadas.php?opcao=" +opcao +"&idempresa="+ idempresa).success(function(data) {
             // console.log(data)
             $scope.contas_importadas = data;
         })

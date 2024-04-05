@@ -4,7 +4,7 @@ app.controller("LoginCtrl", function ($scope, $http, $location, $rootScope) {
 
 		var opcao = 'logar';
 		usuario.opcao = opcao;
-		$http.post('http://localhost:8880/web/Custojoin2/php/empresa.php', usuario).success(function (data){
+		$http.post('http://localhost:8888/web/Custojoin2/php/empresa.php', usuario).success(function (data){
 			if (data.status == 0) {
 				alert(data.message);
 
