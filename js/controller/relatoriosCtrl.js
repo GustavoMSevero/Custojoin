@@ -16,7 +16,11 @@ app.controller("relatoriosCtrl", function ($scope, $http, $rootScope) {
             var ano = response.ano;
             $http.get('http://localhost:8888/web/Custojoin2/php/pegar_relatorio_mensal.php?idempresa='+idempresa+'&mes='+mes+'&ano='+ano).success(function(data) {
                 // console.log(data)
-                $scope.relatorioMensal = data;
+                if(data.status == 0){
+                    alert(data.msg);
+                } else {
+                    $scope.relatorioMensal = data;
+                }
             })
         });
     }

@@ -12,18 +12,30 @@ $ano = $_GET['ano'];
 
 // $mes = (int)$mes;
 
-$pegarRelatorio=$pdo->prepare("SELECT *
-                                FROM relatorios
-                                WHERE idempresa=:idempresa
-                                AND mes=:mes
-                                AND ano=:ano");
+$pegarRelatorio=$pdo->prepare("SELECT * FROM relatorios WHERE idempresa=:idempresa AND mes=:mes AND ano=:ano");
 $pegarRelatorio->bindValue(":idempresa", $idempresa);
 $pegarRelatorio->bindValue(":mes", $mes);
 $pegarRelatorio->bindValue(":ano", $ano);
 $pegarRelatorio->execute();
 
 
-while ($linha=$pegarRelatorio->fetch(PDO::FETCH_ASSOC)) {
+$count = $pegarRelatorio->fetchColumn();
+
+if($count == null){
+
+    $status = 0;
+    $msg = "Sem dados para exibir";
+
+    $return = array(
+        'status'   => $status,
+        'msg'	=> $msg
+    );
+
+    echo json_encode($return);
+
+} else {
+
+    while ($linha=$pegarRelatorio->fetch(PDO::FETCH_ASSOC)) {
 
     $codigo = $linha['codigo'];
     $descricao = $linha['descricao'];
@@ -35,7 +47,7 @@ while ($linha=$pegarRelatorio->fetch(PDO::FETCH_ASSOC)) {
 
     $return[] = array(
         'codigo'	=> $codigo,
-        'descricao'	=> $descricao,
+        'descricao'	=> mb_convert_encoding($descricao, 'UTF-8', 'ISO-8859-1'),
         'valor'	=> $valor,
         'mes'	=> $mes,
         'ano'	=> $ano
@@ -44,6 +56,7 @@ while ($linha=$pegarRelatorio->fetch(PDO::FETCH_ASSOC)) {
 }
 
 echo json_encode($return);
+}
 
 
 

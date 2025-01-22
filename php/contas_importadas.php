@@ -35,7 +35,7 @@ while ($linha=$pegarContasImportadas->fetch(PDO::FETCH_ASSOC)) {
         'codigo'	=> $linha['codigo'],
         'tipo'	=> $linha['tipo'],
         'valor'	=> $valor,
-        'descricao'	=> utf8_encode($linha['descricao']),
+        'descricao'	=> mb_convert_encoding($linha['descricao'], 'UTF-8', 'ISO-8859-1')
     );
 
 }
