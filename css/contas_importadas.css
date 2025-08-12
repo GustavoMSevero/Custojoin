@@ -3,3 +3,13 @@
     margin-top: 30px;
     margin-left: 50%;
 }
+
+#tituloContasImportadas {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#campo_de_consulta {
+    text-align: center;
+}

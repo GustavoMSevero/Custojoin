@@ -1,6 +1,7 @@
 
-.form_consulta {
-    margin-top: 30px;
+.form-consulta {
+    margin-top: 20px;
+    margin-left: 30%;
 }
 
 .mes_numero {
@@ -16,4 +17,59 @@
 .ano_numero {
     display: inline-block;
     width: 15%;
+}
+
+#mes {
+    width: 4%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+#ano {
+    width: 5%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+#codigo {
+    width: 7%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+#descricao {
+    width: 35%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+#valor_total {
+    width: 10%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+#dadoMes {
+    width: 4%;
+    display: inline-block;
+}
+
+#dadoAno {
+    width: 5%;
+    display: inline-block;
+}
+
+#dadoCodigo {
+    width: 7%;
+    display: inline-block;
+}
+
+#dadoDescricao {
+    width: 35%;
+    display: inline-block;
+}
+
+#dadoValor_Total {
+    width: 10%;
+    display: inline-block;
 }

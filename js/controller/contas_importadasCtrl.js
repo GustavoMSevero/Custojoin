@@ -4,6 +4,7 @@ app.controller("contas_importadasCtrl", function ($scope, $http, $window, $rootS
 	var empresa = $rootScope.empresa;
 	var usuario = $rootScope.usuario;
 
+	$scope.idempresa = idempresa;
 	$scope.empresa = empresa;
 	$scope.usuario = usuario;
 

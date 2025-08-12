@@ -37,32 +37,24 @@ if ($numeroDeLinhas > 0) {
     echo json_encode($return);
 
 } else {
+    // agrupado e ordenado por descricao
+    // $relatorioMensal=$pdo->prepare("INSERT INTO relatorios (idempresa, descricao, codigo, valor, ano, mes)
+    //                                 SELECT idempresa, descricao, codigo, sum(valor), YEAR(data), MONTH(data) 
+    //                                 FROM conta_importada 
+    //                                 WHERE descricao in (SELECT DISTINCT descricao  FROM conta_importada WHERE idempresa=:idempresa)
+    //                                 and idempresa=:idempresa
+    //                                 GROUP BY descricao, codigo, year(data), MONTH(data)
+    //                                 order by descricao, year(data), month(data)");
+    // $relatorioMensal->bindValue(":idempresa", $idempresa);
+    // $relatorioMensal->execute();
 
-    // NOVO mes sendo 01
-    // ("INSERT INTO relatorioss (idempresa, descricao, codigo, valor, ano, mes)
-    // SELECT idempresa, descricao, codigo, sum(valor), DATE_FORMAT(data, '%Y'), DATE_FORMAT(data, '%m')
-    // FROM conta_importada 
-    // WHERE descricao in (SELECT DISTINCT descricao  FROM conta_importada WHERE idempresa=:idempresa)
-    // and idempresa=:idempresa
-    // GROUP BY descricao, codigo, DATE_FORMAT(data, '%Y'), DATE_FORMAT(data, '%m')
-    // order by descricao, DATE_FORMAT(data, '%Y'), DATE_FORMAT(data, '%m')");
-
-    // NOVO mes sendo 1
-    // insert into relatorioss (idempresa, descricao, codigo, valor, ano, mes)
-    // select idempresa, descricao, codigo, sum(valor), YEAR(data), MONTH(data)
-    // from conta_importada 
-    // where descricao in (SELECT DISTINCT descricao  FROM conta_importada WHERE idempresa = 12)
-    // and idempresa = 12
-    // group by descricao, codigo, year(data), MONTH(data)
-    // order by descricao, year(data), month(data);
-    
+    // agrupado e ordenado por código
     $relatorioMensal=$pdo->prepare("INSERT INTO relatorios (idempresa, descricao, codigo, valor, ano, mes)
                                     SELECT idempresa, descricao, codigo, sum(valor), YEAR(data), MONTH(data) 
                                     FROM conta_importada 
-                                    WHERE descricao in (SELECT DISTINCT descricao  FROM conta_importada WHERE idempresa=:idempresa)
-                                    and idempresa=:idempresa
-                                    GROUP BY descricao, codigo, year(data), MONTH(data)
-                                    order by descricao, year(data), month(data)");
+                                    WHERE idempresa=:idempresa
+                                    GROUP BY codigo, descricao, year(data), MONTH(data)
+                                    order by codigo, descricao, year(data), month(data);");
     $relatorioMensal->bindValue(":idempresa", $idempresa);
     $relatorioMensal->execute();
 

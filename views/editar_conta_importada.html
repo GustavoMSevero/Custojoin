@@ -1,0 +1,37 @@
+<style type="text/css">
+
+</style>
+<div class="container-fluid" ng-controller="editar_conta_importadaCtrl">
+	<div class="row logoFluxojojn" ng-controller="InicialCtrl">
+		<div class="col-md-6">
+			<div class="custojoin">
+				Custojoin
+			</div>
+		</div>
+		<div class="col-md-3 nomeEmpresa">
+			<h4>{{empresa}}</h4>
+		</div>
+		<div class="col-md-3 nomeUsuario">
+			<h4>Olá, {{usuario}}</h4>
+		</div>
+	</div>
+
+	<div ng-include="'views/links.html'"></div>
+
+	<div id="tituloContasImportadas">
+		Editar Conta Importada
+	</div>
+	
+	<div class="row">
+        <form>
+            <input class="form-control campoData" type="text" name="data" ng-model="contaImportada.data">
+            <input class="form-control campoCodigo" type="text" name="codigo" ng-model="contaImportada.codigo">
+            <input class="form-control campoTipo" type="text" name="tipo" ng-model="contaImportada.tipo">
+            <input class="form-control campoValor" type="text" name="valor" ng-model="contaImportada.valor">
+            <input class="form-control campoDescricao" type="text" name="descricao" ng-model="contaImportada.descricao">
+            <button class="btn btn-success" ng-disabled="formCate.$invalid" ng-click="atualizarConta(contaImportada)">Atualizar</button>
+        </form>
+		<div class="col-md-4"></div>
+		<div class="col-md-4"></div>
+	</div>
+</div>

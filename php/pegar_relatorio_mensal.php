@@ -10,16 +10,15 @@ $idempresa = $_GET['idempresa'];
 $mes = $_GET['mes'];
 $ano = $_GET['ano'];
 
-// $mes = (int)$mes;
-
 $pegarRelatorio=$pdo->prepare("SELECT * FROM relatorios WHERE idempresa=:idempresa AND mes=:mes AND ano=:ano");
 $pegarRelatorio->bindValue(":idempresa", $idempresa);
 $pegarRelatorio->bindValue(":mes", $mes);
 $pegarRelatorio->bindValue(":ano", $ano);
 $pegarRelatorio->execute();
 
-
-$count = $pegarRelatorio->fetchColumn();
+// $numeroDeLinhas = $pegarRelatorio->rowCount();
+// echo "número de registros $numeroDeLinhas";
+$count = $pegarRelatorio->rowCount();
 
 if($count == null){
 

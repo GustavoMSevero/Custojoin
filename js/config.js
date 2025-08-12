@@ -69,5 +69,9 @@ app.config(function($routeProvider, $locationProvider){
         templateUrl: "views/relatorios.html",
     })
 
+    .when("/editar_conta_importada/:idconta", {
+        templateUrl: "views/editar_conta_importada.html",
+    })
+
     
 });

@@ -1,11 +1,11 @@
 <style type="text/css">
 
+
 </style>
 <div class="container-fluid" ng-controller="contas_importadasCtrl">
-	<div class="row logoFluxojojn">
+	<div class="row logoFluxojojn" ng-controller="InicialCtrl">
 		<div class="col-md-6">
 			<div class="custojoin">
-				<!-- <img src="imgs/fluxojoin.png"> -->
 				Custojoin
 			</div>
 		</div>
@@ -18,54 +18,49 @@
 	</div>
 
 	<div ng-include="'views/links.html'"></div>
-	
-	<div class="row">
-		<div class="col-md-6" ng-controller="relatoriosCtrl">
-            <form name="consulta" class="form_consulta">
-                <select class="form-control mes_numero" name="mes" ng-model="data.mes" id="">
-                    <option value="01">Jan</option>
-                    <option value="02">Fev</option>
-                    <option value="03">Mar</option>
-                    <option value="04">Abr</option>
-                    <option value="05">Mai</option>
-                    <option value="06">Jun</option>
-                    <option value="07">Jul</option>
-                    <option value="08">Ago</option>
-                    <option value="09">Set</option>
-                    <option value="10">Out</option>
-                    <option value="11">Nov</option>
-                    <option value="12">Dez</option>
-                </select>
-                <select class="form-control ano_numero" name="mes" ng-model="data.ano" id="">
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                </select>
-                <button class="btn btn-success" ng-disabled="consulta.$invalid" ng-click="salvar(data)">Salvar</button>
-            </form>
-            <table>
-                <thead>
-                    <tr>
-                        <td><b>Mês</b></td>
-                        <td><b>Ano</b></td>
-                        <td><b>Código</b></td>
-                        <td><b>Descrição</b></td>
-                        <td><b>Valor Total</b></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="rm in relatorioMensal">
-                        <td width="50">{{rm.mes}}</td>
-                        <td width="50">{{rm.ano}}</td>
-                        <td width="100">{{rm.codigo}}</td>
-                        <td>{{rm.descricao}}</td>
-                        <td align="right">{{rm.valor}}</td>
-                    </tr>
-                </tbody>
-            </table>
-		</div>
-		<div class="col-md-4"></div>
-		<div class="col-md-4"></div>
-	</div>
+</div>
+
+<div class="form-consulta" ng-controller="relatoriosCtrl">
+    <form name="consulta">
+        <select class="form-control mes_numero" name="mes" ng-model="data.mes" id="">
+            <option value="01">Jan</option>
+            <option value="02">Fev</option>
+            <option value="03">Mar</option>
+            <option value="04">Abr</option>
+            <option value="05">Mai</option>
+            <option value="06">Jun</option>
+            <option value="07">Jul</option>
+            <option value="08">Ago</option>
+            <option value="09">Set</option>
+            <option value="10">Out</option>
+            <option value="11">Nov</option>
+            <option value="12">Dez</option>
+        </select>
+        <select class="form-control ano_numero" name="mes" ng-model="data.ano" id="">
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+        </select>
+        <button class="btn btn-success" ng-disabled="consulta.$invalid" ng-click="salvar(data)">Emitir relatório</button>
+    </form>
+
+    <div class="dados">
+        <div id="mes">Mês</div>
+        <div id="ano">Ano</div>
+        <div id="codigo">Código</div>
+        <div id="descricao">Descrição</div>
+        <div id="valor_total">Valor Total</div>
+    </div>
+    <div class="mostra_dados">
+        <div ng-repeat="rm in relatorioMensal">
+            <div id="dadoMes">{{rm.mes}}</div>
+            <div id="dadoAno">{{rm.ano}}</div>
+            <div id="dadoCodigo">{{rm.codigo}}</div>
+            <div id="dadoDescricao">{{rm.descricao}}</div>
+            <div id="dadoValor_Total">{{rm.valor}}</div>
+        </div>
+    </div>
+</div>
+
 </div>
